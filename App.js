@@ -11,11 +11,11 @@ import {
   SafeAreaView,
   Platform,
   StatusBar,
-  Dimensions
- } from 'react-native';
+  Dimensions,
+} from 'react-native';
 
-import {useDeviceOrientation} from '@react-native-community/hooks'
-
+import { useDeviceOrientation } from '@react-native-community/hooks';
+import WelcomeScreen from './app/screen/WelcomeScreen'
 export default function App() {
   let x = 5;
   const handleTextPress = (params) => {
@@ -43,48 +43,58 @@ export default function App() {
     alert('button tapped');
   };
   console.log('x is 5', x);
-  console.log(Dimensions.get("screen"));
+  console.log(Dimensions.get('screen'));
   console.log('useDeviceOrientation', useDeviceOrientation());
   const deviceOrientation = useDeviceOrientation();
-  const isLandscape = deviceOrientation ==='landscape';
+  const isLandscape = deviceOrientation === 'landscape';
   const isPortrait = deviceOrientation === 'portrait';
   return (
-    <SafeAreaView style={[styles.container]}>
-      <Text
-        style={[styles.textStyles]}
-        numberOfLines={2}
-        onPress={handleTextPress}
-      >
-        Ghatak Commando Deployed for Operation BlindSpot
-      </Text>
-      <TouchableOpacity onPress={handleImagePress}>
-        <Image
-          style={[styles.imageStyles]}
-          source={require('./assets/para-commando.jpg')}
-          fadeDuration={1000}
-        />
-      </TouchableOpacity>
-      {/* using remotely hosted images */}
+    // <SafeAreaView style={styles.container}>
+    //  {false && <View>
+    //     <Text
+    //       style={[styles.textStyles]}
+    //       numberOfLines={2}
+    //       onPress={handleTextPress}
+    //     >
+    //       Ghatak Commando Deployed for Operation BlindSpot
+    //     </Text>
+    //     <TouchableOpacity onPress={handleImagePress}>
+    //       <Image
+    //         style={[styles.imageStyles]}
+    //         source={require('./app/assets/para-commando.jpg')}
+    //         fadeDuration={1000}
+    //       />
+    //     </TouchableOpacity>
+    //     {/* using remotely hosted images */}
 
-      <Image
-        style={styles.imageStyles}
-        source={{ uri: 'https://picsum.photos/200/300' }}
-        blurRadius={1}
-        fadeDuration={3000}
-      />
+    //     <Image
+    //       style={[styles.imageStyles, { alignSelf: 'center' }]}
+    //       source={{ uri: 'https://picsum.photos/200/300' }}
+    //       blurRadius={1}
+    //       fadeDuration={3000}
+    //     />
 
-      <Button color='orange' title='Click here' onPress={handleButtonPress} />
-    </SafeAreaView>
+    //     <Button color='orange' title='Click here' onPress={handleButtonPress} />
+    //   </View>}
+    //   <View>
+   
+
+    //   </View>
+    // </SafeAreaView>
+    <WelcomeScreen/>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column-reverse',
     backgroundColor: '#636B2F',
+    // flexWrap: 'wrap',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
+    alignContent: 'center',
+    justifyContent: 'space-evenly',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   textStyles: {
     color: 'white',
@@ -93,8 +103,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   imageStyles: {
-    width: 50,
-    height: 100,
+    width: 100,
+    height: 200,
     objectFit: 'cover',
     marginTop: 10,
   },
