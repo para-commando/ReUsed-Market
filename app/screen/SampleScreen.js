@@ -60,7 +60,7 @@ function SampleScreen() {
         <TouchableOpacity onPress={handleImagePress}>
           <Image
             style={[styles.imageStyles]}
-            source={require('./app/assets/para-commando.jpg')}
+            source={require('../assets/para-commando.jpg')}
             fadeDuration={1000}
           />
         </TouchableOpacity>
