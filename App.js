@@ -1,4 +1,5 @@
 import { StyleSheet, Platform, StatusBar } from 'react-native';
+// test comment
 
 import WelcomeScreen from './app/screen/WelcomeScreen';
 import SampleScreen from './app/screen/SampleScreen';
